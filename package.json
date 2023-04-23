@@ -1,6 +1,6 @@
 {
-  "name": "osx-wifi-cli",
-  "version": "2.1.0",
+  "name": "@licoded/osx-wifi-cli",
+  "version": "1.0.0",
   "description": "A command line tool for managing wifi connection in osx",
   "keywords": [
     "osx",
@@ -10,11 +10,10 @@
     "wireless",
     "network"
   ],
-  "homepage": "https://github.com/danyshaanan/osx-wifi-cli",
+  "homepage": "https://github.com/licoded/osx-wifi-cli#readme",
   "author": {
-    "name": "Dany Shaanan",
-    "email": "danyshaanan@gmail.com",
-    "url": "http://danyshaanan.com/"
+    "name": "licoded",
+    "email": "busy.li@foxmail.com"
   },
   "os": [
     "darwin"
@@ -24,16 +23,15 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/danyshaanan/osx-wifi-cli/blob/master/LICENSE"
+      "url": "https://github.com/licoded/osx-wifi-cli/blob/master/LICENSE"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/danyshaanan/osx-wifi-cli.git"
+    "url": "git+https://github.com/licoded/osx-wifi-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/danyshaanan/osx-wifi-cli/issues",
-    "email": "danyshaanan@gmail.com"
+    "url": "https://github.com/licoded/osx-wifi-cli/issues"
   },
   "preferGlobal": true,
   "engines": {
