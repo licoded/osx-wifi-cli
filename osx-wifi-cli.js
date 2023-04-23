@@ -27,6 +27,7 @@ const platforms = {
   darwin: {
     on: 'networksetup -setairportpower DEVICE on',
     off: 'networksetup -setairportpower DEVICE off',
+    ip: `ifconfig -L en0`,
     scan: `${airport} scan`,
     pass: 'security find-generic-password -wa "SSID"',
     connect: 'networksetup -setairportnetwork DEVICE "NETWORK" "PASSWORD"',
@@ -64,6 +65,14 @@ if (args.includes('--device')) args.splice(args.indexOf('--device'), 2)
 const exec = command => require('child_process').execSync(command).toString()
 const execTrim = command => exec(command).trim()
 
+function getIpAddress() {
+  return execTrim(utils.ip)
+    .split('\n')
+    .map((x) => x.trim())
+    .filter((x) => x.startsWith('inet '))[0]
+    .split(' ')[1]
+}
+
 if (args[0] === 'on') { // cli.on is a function
   execTrim(utils.on)
 } else if (args[0] === 'off') {
@@ -83,7 +92,12 @@ if (args[0] === 'on') { // cli.on is a function
   execTrim(utils.connect.replace('NETWORK', args[0]).replace('PASSWORD', args[1]))
 } else if (args.length === 0) {
   const ssid = execTrim(utils.ssid)
-  console.log(ssid ? `you are connected to ${ssid}.` : 'You are not connected anywhere.')
+  if(ssid) {
+    const ip_address = getIpAddress();
+    console.log(`you are connected to ${ssid}.    (IP: ${ip_address})` );
+  } else {
+    console.log('You are not connected anywhere.');
+  }
 } else {
   cli.help()
 }
